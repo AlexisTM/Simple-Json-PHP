@@ -1,0 +1,293 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"inde",
+				"indexOf"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"objec",
+				"objectJson"
+			],
+			[
+				"json",
+				"json"
+			],
+			[
+				"encode",
+				"json_encode"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/D/Workspace/www/Utils/CSS Grid Generator/LICENSE",
+			"settings":
+			{
+				"buffer_size": 18025,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 380.0,
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Disable Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Enable Package"
+			],
+			[
+				"tex",
+				"Set Syntax: TeX"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 160.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/Workspace/www/Utils/admin-Drag&Drop/index.php",
+		"/D/Workspace/www/Utils/admin-Drag&Drop/Readme.md",
+		"/D/Workspace/www/Utils/README.md",
+		"/D/Workspace/www/Utils/admin-Drag&Drop/admin.php",
+		"/D/Workspace/www/Utils/functions.js",
+		"/D/Workspace/www/Utils/admin.js",
+		"/D/Workspace/www/Utils/AJAX.js",
+		"/D/Tools/wamp/bin/apache/apache2.4.9/conf/httpd.conf",
+		"/D/Steam/steamapps/common/Serious Sam 3 Serious Digital Edition Bonus/open-linux.sh",
+		"/D/Steam/steamapps/common/Serious Sam 3 Serious Digital Edition Bonus/open-osx.sh",
+		"/D/Workspace/www/GW/kiosk-greenwatch/bash/etc/greenwatch/debug.sh",
+		"/D/µtorrent/Mr Peabody and Sherman 2014 READNFO HDRip XviD-HELLRAZ0R/HELLRAZ0R.nfo.!ut",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/admin.js",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/AJAX.js",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/cssgen.js",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/functions.js",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/jquery.2.1.0.js",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/jquery.flot.min.js",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/jquery.flot.time.min.js",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/jquery.flot.resize.min.js",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/jquery-1.10.2.js",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/jquery-ui-1.10.4.custom.js",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/jquery-ui-1.10.4.custom.min.js",
+		"/D/Workspace/www/GW/kiosk-greenwatch/web/js/kiosk.js",
+		"/D/Workspace/www/Utils/kiosk.js",
+		"/D/µtorrent/Mr Peabody and Sherman 2014 READNFO HDRip XviD-HELLRAZ0R/RARBG.com.txt",
+		"/D/Documents/Temp/Temp1_Kiosk for dummies.zip/Kiosk for dummies/bash/etc/greenwatch/splash.sh",
+		"/D/Documents/Temp/Temp1_Kiosk for dummies.zip/Kiosk for dummies/bash/etc/greenwatch/debug.sh",
+		"/D/Downloads/i-frankenstein_french-911863/I.Frankenstein.2014.MULTi.1080p.BluRay.x264-LOST.Fr.srt",
+		"/D/Tools/wamp/bin/apache/apache2.4.9/conf/extra/httpd-manual.conf",
+		"/D/Downloads/FMaison (2).cs",
+		"/D/Downloads/TMaison (2).cs",
+		"/D/Downloads/PicFunctions (1).cs",
+		"/D/Workspace/www/JsonAPI/user/login/index.php",
+		"/D/Workspace/www/JsonAPI/user/info/index.php",
+		"/D/Workspace/www/JsonAPI/includes/mysql.php",
+		"/D/Workspace/www/JsonAPI/includes.php",
+		"/D/Workspace/www/JsonAPI/includes/functions.php",
+		"//MISTIGRI/Users/Public/Libraries/RecordedTV.library-ms",
+		"/D/Workspace/www/JsonAPI/index.html",
+		"/D/Workspace/www/JsonAPI/includes/json.php",
+		"/D/Downloads/siw-setup-gotd/[0]",
+		"/D/Tools/wamp/apps/phpsysinfo3.1.12/xml.php",
+		"/C/Program Files/Sublime Text 3/sublime_text.exe",
+		"/D/Workspace/www/JsonAPI/user/info/default.json",
+		"/D/Workspace/www/JsonAPI/JSONAPI.sublime-project",
+		"/C/Users/Penultimo/AppData/Roaming/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/D/Workspace/Matlab/MatLab FFT/NewTimeVector.m",
+		"/D/Downloads/TMaison (1).cs",
+		"/D/Workspace/www/GW/kiosk-greenwatch/bash/etc/greenwatch/kioskordebug.sh",
+		"/D/Workspace/www/GW/kiosk-greenwatch/bash/etc/greenwatch/splash.sh",
+		"/D/Documents/Temp/Temp1_fortune-master.zip/fortune-master/test/all.js",
+		"/D/Downloads/PicFunctions.cs",
+		"//COMPAQ/Users/Louis/Desktop/TMaison (1).cs",
+		"/D/Downloads/TMaison.cs",
+		"/D/Workspace/Matlab/MatLab FFT/Init.m",
+		"/D/Downloads/FMaison.cs",
+		"/D/Workspace/Matlab/MatLab FFT/LastOne.m",
+		"/G/Applications/Adobe Photoshop CC 14.1/ChingLiu.Install.Notes.nfo",
+		"/G/Applications/Adobe Photoshop CC 14.1/crack/VR.nfo"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"deny",
+			"onlineoffline",
+			"    ",
+			"	"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"	"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/D/Workspace/www/Utils/CSS Grid Generator/LICENSE",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18025,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 6340.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "JSONAPI.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"NewTimeVector.m"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 172.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
