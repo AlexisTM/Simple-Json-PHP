@@ -1,4 +1,8 @@
 JSONAPI
 =======
 
-JsonAPI gives you a base to make the link between JSON &amp; PHP
+Introduction
+-------
+The JSON API makes you able to create your own API easily.
+
+

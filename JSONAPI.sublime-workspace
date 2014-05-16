@@ -27,14 +27,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/D/Workspace/www/Utils/CSS Grid Generator/LICENSE",
-			"settings":
-			{
-				"buffer_size": 18025,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -76,9 +68,26 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Penultimo/Desktop/New Text Document.txt",
+		"/D/Games/Castlevania Lords of Shadow 2/bin/steam_api.ini",
+		"/D/Downloads/ACS-Unified-LIB-CTAPI-Win-1001-P/ACS-Unified-LIB-CTAPI-Win-1001-P/demo/x64/ctacs.ini",
+		"/D/Downloads/ACS-Unified-LIB-CTAPI-Win-1001-P/ACS-Unified-LIB-CTAPI-Win-1001-P/lib/x86/ctacs.lib",
+		"/D/Documents/Temp/Temp1_sdk40_1306.zip/sdk/readme.txt",
+		"/D/Documents/Temp/Temp1_sdk40_1306.zip/sdk/Examples/CS/EidSamples/Sign.cs",
+		"/D/Downloads/README",
+		"/D/Downloads/ACS-Unified-LIB-CTAPI-Win-1001-P/ACS-Unified-LIB-CTAPI-Win-1001-P/ReadMe.txt",
+		"/D/Downloads/ACS-Unified-LIB-CTAPI-Win-1001-P/ACS-Unified-LIB-CTAPI-Win-1001-P/scripts/ct_bcs.txt",
+		"/D/Downloads/ACS-Unified-LIB-CTAPI-Win-1001-P/ACS-Unified-LIB-CTAPI-Win-1001-P/demo/x64/log.txt",
+		"/D/Downloads/ACS-Unified-MSI-Winx86-4020-P/ACS-Unified-MSI_Winx86-4020-P/ReadMe.txt",
+		"/D/All documents/Cal vide.htm",
+		"/D/Workspace/www/Utils/README.md",
+		"/D/All documents/Cal Win7.htm",
+		"/E/loader/entries/archiso-x86_64.conf",
+		"/D/Documents/Temp/7zO21FB.tmp/README",
+		"/D/Workspace/www/GW/kiosk-greenwatch/README.md",
+		"/D/Workspace/www/Utils/CSS Grid Generator/LICENSE",
 		"/D/Workspace/www/Utils/admin-Drag&Drop/index.php",
 		"/D/Workspace/www/Utils/admin-Drag&Drop/Readme.md",
-		"/D/Workspace/www/Utils/README.md",
 		"/D/Workspace/www/Utils/admin-Drag&Drop/admin.php",
 		"/D/Workspace/www/Utils/functions.js",
 		"/D/Workspace/www/Utils/admin.js",
@@ -139,7 +148,7 @@
 	],
 	"find":
 	{
-		"height": 28.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -175,37 +184,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/D/Workspace/www/Utils/CSS Grid Generator/LICENSE",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 18025,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 6340.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
