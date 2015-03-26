@@ -1,6 +1,6 @@
 <?php
 	include('../../includes.php');
-	$Json = new json('raw', 'type');
+	$Json = new json('raw', 'none');
 	$object = new stdClass();
 	$object->test = 'coucou';
 	$arraytest = array('1','2','3');

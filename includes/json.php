@@ -5,7 +5,7 @@
 		public $callback;
 		public $contents = array();
 
-		public function __construct($type, $callback){
+		public function __construct($type, $callback='none'){
 			if(!($type == 'function' OR $type == 'var' OR $type == 'raw')) $type = 'raw';
 			$this->type = $type;
 			$this->callback = $callback;
@@ -58,17 +58,28 @@
 			$this->json = "\"{$name}\": {$stringifiedObject},";
 		}
 	}
+	
 	class arrayJson extends content {
 		public function __construct($name, $array){
 			$stringifiedArray = json_encode($array);
 			$this->json = "\"{$name}\": {$stringifiedArray},";
 		}
 	}
+	
 	class propertyJson extends content {
 		public function __construct($name, $value){
+			$value = addslashes($value);
 			$this->json = "\"{$name}\": \"{$value}\",";
 		}
 	}
+
+	class JsonJson extends content {
+		public function __construct($name, $value){
+			$value = addslashes($value);
+			$this->json = "\"{$name}\": {$value},";
+		}
+	}
+	
 	class textJson extends content {
 		public function __construct($value){
 			$this->json = "\"Text\": \"{$value}\",";

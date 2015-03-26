@@ -27,6 +27,17 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "xjz.addon.PreferenceManager=function(){var a;(function(){a=localStorage})();this.getPreference=function(b){var c=a[b];if(c==undefined){return xjz.addon.settings.preferences.standard[b]}c=c==\"true\"?true:c==\"false\"?false:c;return c};this.setPreference=function(b,c){a[b]=c}};",
+			"file": "/C/Users/Penultimo/AppData/Local/Google/Chrome/User Data/Default/Extensions/cphljojhgmnabimjemakjleocdheengh/3.5.0.1_0/scripts/chrome/classes/PreferenceManager.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 273,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -68,6 +79,29 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Penultimo/AppData/Local/Google/Chrome/User Data/Safe Browsing Cookies",
+		"/D/Workspace/www/Utils/admin-Drag&Drop/js/admin.js",
+		"/C/Program Files (x86)/Google/Chrome/Application/34.0.1847.131/Extensions/external_extensions.json",
+		"/C/Program Files (x86)/Google/Chrome/Application/34.0.1847.131/default_apps/external_extensions.json",
+		"/C/Program Files (x86)/Google/Chrome/Application/34.0.1847.131/PepperFlash/manifest.json",
+		"/C/Users/Penultimo/AppData/Local/Google/Chrome/User Data/Safe Browsing Bloom",
+		"/D/Downloads/IP filter updater/IP filter updater.bat",
+		"/C/Users/Penultimo/AppData/Roaming/uTorrent/IP filter µpdater.bat",
+		"/D/µtorrent/Dark_Souls_Prepare_To_Die_Edition-FLT/fairlight.nfo",
+		"/D/All documents/Invitation.msrcIncident",
+		"/D/Dropbox/Dropbox/3BE/Scan-cours-tuyeau- Pierre/Systèmes digitaux/CODE/EXAM/mainExam-Original.c",
+		"/D/Dropbox/Dropbox/3BE/Scan-cours-tuyeau- Pierre/info.txt",
+		"/E/South Park The Stick of Truth PC game + DLC ^^nosTEAM^^/READ ME FIRST !!!.txt",
+		"/D/Workspace/www/Utils/index.html",
+		"/D/All documents/jo.reg",
+		"/C/Users/Penultimo/Desktop/desktop.ini",
+		"/C/Users/Penultimo/AppData/Roaming/uTorrent/READ_ME.txt",
+		"/C/Program Files (x86)/Malwarebytes Anti-Malware/Chameleon/Windows/chameleon.chm",
+		"/D/Workspace/www/Utils/JsonAPI/README.md",
+		"/D/Documents/Temp/Temp1_starter_mattrunks_35700.zip/Game.ai",
+		"/C/Users/Penultimo/AppData/Local/Microsoft/Windows/INetCache/IE/4XKOR0LJ/featured[1].json",
+		"/C/Users/Penultimo/AppData/Local/Microsoft/Windows/INetCache/IE/E736HAIW/ads-in-client[2].js",
+		"/D/Workspace/www/Utils/JsonAPI/user/info/index.php",
 		"/C/Users/Penultimo/Desktop/New Text Document.txt",
 		"/D/Games/Castlevania Lords of Shadow 2/bin/steam_api.ini",
 		"/D/Downloads/ACS-Unified-LIB-CTAPI-Win-1001-P/ACS-Unified-LIB-CTAPI-Win-1001-P/demo/x64/ctacs.ini",
@@ -184,8 +218,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/Penultimo/AppData/Local/Google/Chrome/User Data/Default/Extensions/cphljojhgmnabimjemakjleocdheengh/3.5.0.1_0/scripts/chrome/classes/PreferenceManager.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 273,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 1208.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
