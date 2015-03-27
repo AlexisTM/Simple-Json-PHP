@@ -6,7 +6,7 @@ class Phpunit extends PHPUnit_Framework_TestCase
     {
         $Json = new json();
         $this->buildJson($Json);
-        $this->assertJsonStringEqualsJsonString($Json->json_make(),
+        $this->assertEquals($Json->json_make(),
             '{"width": "565px","Text": "You are logged IN","An_Object": {"test":"OK"},"An_Array": ["1","2","3"],"A_Json": {"Hello" : "darling"}}');
     }
     public function testFunction()
