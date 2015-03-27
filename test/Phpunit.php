@@ -41,7 +41,7 @@ class Phpunit extends PHPUnit_Framework_TestCase
         $Json = new json();
         $Json->addContent(new propertyJson('width', '565px'));
         $this->assertEquals($Json->json_make(),
-            '{"width" : "565px"}');
+            '{"width": "565px"}');
     }
     public function testTextJson()
     {
