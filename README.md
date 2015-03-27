@@ -101,6 +101,8 @@ json_encode : https://php.net/manual/fr/function.json-encode.php
 
 Comparaison of JSON PHP libs : http://gggeek.altervista.org/sw/article_20061113.html
 
+JSON API Standard : http://jsonapi.org/
+
 Credits 
 --------
 
