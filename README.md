@@ -1,4 +1,4 @@
-SimpleJSON
+Simple JSON for PHP
 =======
 
 Introduction
