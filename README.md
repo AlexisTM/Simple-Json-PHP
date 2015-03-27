@@ -88,6 +88,16 @@ For any change (entreprises), feel free to contact me.
 
 mailto:alexis.paques@gmail.com
 
+References
+----------
+
+Informations : https://en.wikipedia.org/wiki/JSONP
+
+Validator : http://json.parser.online.fr
+
+ECMA-404 : http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf
+
+json_encode : https://php.net/manual/fr/function.json-encode.php
 
 Credits 
 --------
