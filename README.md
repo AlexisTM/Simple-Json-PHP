@@ -79,6 +79,14 @@ To validate the JSON, you can grab back the JSON string via the make() method.
 	
 	$JsonString = $Json->make();
 
+Knows dumb errors
+----------
+
+The file format of the PHP script MUST be UTF-8 *Without* BOM. Else the JSON is corrupted for the JQuery AJAX request. You can bypass the file format by asking text and not JSON type in the JQuery request and using JSON.Parse yourself.
+
+You MAY NOT use ANY echo in the script. The only things that can write on the page is json_send()! Else it corrupt again the json.
+
+
 Contribute
 ----------
 
