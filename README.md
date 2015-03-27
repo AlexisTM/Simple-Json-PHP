@@ -1,4 +1,4 @@
-JSONAPI
+SimpleJSON
 =======
 
 Introduction
