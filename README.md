@@ -72,6 +72,13 @@ The jsonJson makes you able to send any preformated JSON text. There is no verif
 	$Json->addContent(new jsonJson("A_Json",$jsonOnly));
 	> {"A_Json": {"Hello" : "darling"}}
 
+Validating JSON
+----------
+
+To validate the JSON, you can grab back the JSON string via the make() method.
+	
+	$JsonString = $Json->make();
+
 Contribute
 ----------
 
