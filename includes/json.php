@@ -5,8 +5,8 @@
 		public $callback;
 		public $contents = array();
 
-		public function __construct($type, $callback='none'){
-			if(!($type == 'function' OR $type == 'var' OR $type == 'raw')) $type = 'raw';
+		public function __construct($type='raw', $callback='none'){
+			if(!($type == 'callback' OR $type == 'var' OR $type == 'raw')) $type = 'raw';
 			$this->type = $type;
 			$this->callback = $callback;
 		}
@@ -21,13 +21,12 @@
 			if($this->type == 'var'){
 				$jsonText .= "var {$this->callback} = ";
 			}
-			elseif ($this->type == 'function'){
+			elseif ($this->type == 'callback'){
 				$jsonText .="{$this->callback}(";
 			}
 
 			// Begin of Encapsulate JSON
 			$jsonText .= '{';
-			$jsonText .= '"Servers_status" : "ON", ';
 			// Data
 			if(is_array($this->contents)){
 				foreach($this->contents as $content){
@@ -39,8 +38,10 @@
 
 			$jsonText .= '}';
 			// End of encapsulate JSON
-			if ($this->type == 'callback'){
-				$jsonText .= ')';
+			if ($this->type == 'var'){
+				$jsonText .= ';';
+			} elseif ($this->type == 'callback'){
+				$jsonText .= ');';
 			}
 			return $jsonText;
 		}
@@ -73,9 +74,9 @@
 		}
 	}
 
-	class JsonJson extends content {
+	class jsonJson extends content {
 		public function __construct($name, $value){
-			$value = addslashes($value);
+			//$value = addslashes($value);
 			$this->json = "\"{$name}\": {$value},";
 		}
 	}
