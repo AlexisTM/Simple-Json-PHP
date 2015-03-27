@@ -2,7 +2,7 @@
     "name": "alexistm/simple-json-php",
     "description": "JSONAPI makes you able to construct JSON and send the headers easily. The main purposes are speed and ease to use.",
     "keywords": ["php", "JSON", "JSONapi", "api", "JSONP"],
-    "homepage": "https://github.com/AlexisTM/JSONAPI/",
+    "homepage": "https://github.com/AlexisTM/Simple-Json-PHP",
     "type": "library",
     "license": "GPLv2",
     "authors": [{
