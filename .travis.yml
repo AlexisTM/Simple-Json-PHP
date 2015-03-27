@@ -1,2 +1,2 @@
 language:php
-script: phpunit ./test/Phpunit
+script: phpunit
