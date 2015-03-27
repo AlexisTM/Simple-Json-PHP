@@ -1,0 +1,21 @@
+{
+    "name": "AlexisTM/JSONAPI",
+    "description": "JSONAPI makes you able to construct JSON and send the headers easily",
+    "keywords": ["php", "JSON", "JSONapi", "api", "JSONP"],
+    "homepage": "https://github.com/AlexisTM/JSONAPI/",
+    "type": "library",
+    "license": "GPLv2",
+    "authors": [{
+        "name": "Alexis Paques",
+        "email": "alexis.paques@gmail.com",
+        "homepage": "https://github.com/AlexisTM"
+    }],
+    "require": {
+        "php": ">=5.2.0",
+        "json": ">= 1.2.0"
+    },
+    "autoload": {
+        "psr-0": {"MyLibraryNamespace": "includes/"}
+    },
+    "include-path" : ["includes/"]
+}
