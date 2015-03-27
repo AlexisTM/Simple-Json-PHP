@@ -99,6 +99,8 @@ ECMA-404 : http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404
 
 json_encode : https://php.net/manual/fr/function.json-encode.php
 
+Comparaison of JSON PHP libs : http://gggeek.altervista.org/sw/article_20061113.html
+
 Credits 
 --------
 
