@@ -1,9 +1,9 @@
 <?php
 	// type : 'function' or 'var' or 'raw'
 	class json {
-		public $type;
-		public $callback;
-		public $contents = array();
+		private $type;
+		private $callback;
+		private $contents = array();
 
 		public function __construct($type='raw', $callback='none'){
 			if(!($type == 'callback' OR $type == 'var' OR $type == 'raw')) $type = 'raw';
