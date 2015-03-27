@@ -1,5 +1,5 @@
-Simple JSON for PHP
-=======
+Simple JSON for PHP  [![Build Status](https://travis-ci.org/AlexisTM/Simple-Json-PHP.svg?branch=master)](https://travis-ci.org/AlexisTM/Simple-Json-PHP)
+===================
 
 Introduction
 -------
