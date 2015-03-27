@@ -1,5 +1,5 @@
 {
-    "name": "AlexisTM/JSONAPI",
+    "name": "alexistm/jsonapi",
     "description": "JSONAPI makes you able to construct JSON and send the headers easily",
     "keywords": ["php", "JSON", "JSONapi", "api", "JSONP"],
     "homepage": "https://github.com/AlexisTM/JSONAPI/",
