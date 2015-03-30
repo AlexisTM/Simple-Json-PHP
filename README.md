@@ -3,20 +3,27 @@ Simple JSON for PHP  [![Build Status](https://travis-ci.org/AlexisTM/Simple-Json
 
 Introduction
 -------
-The JSON API makes you able to create your own API easily by passing PHP objects, PHP Array, JsonString or adding a single property.
+Simple JSON for PHP makes you able to create your own JSON-API easily by passing PHP objects, PHP Array, JsonString or adding a single property.
 
-It has been coded in PHP Objects to make it easy and it is encoded with json_encode() to be really fast and you do not have to worries about the headers! The *json_send()* makes sure there is no cache, the last JSON has expired and makes sure the Content-type is application/json!
-
-With this library, you will be able to store the *JSON in a variable*, *fire a callback* (Dynamic script loading or JSONP) or deal with the *JSON inside an AJAX request* (JQuery).
+Pros : 
+* Easy      : Coded with PHP Objects
+* Fast      : JSON are encoded with the native json_encode()
+* Reliable  : Headers are send automatically
+* Modulable : You can extend the 'content' class to make a custom JSON
+* Complete  : You can add objects, properties or arrays
+* Callback/Variable or raw option 
+* JSONP compatible
+* JQuery compatible
 
 Usage
 -------
-To use the JSON class, you just need to include the 'json.php' file.
-	
+
+```php
+  // Include the json class
 	include('includes/json.php');
 
-Then create your PHP-Json Object
-	
+  // Then create the PHP-Json Object to suits your needs
+
 	// Set a variable ; var name = {}
 	$Json = new json('var', 'name'); 
 	// Fire a callback ; callback({});
@@ -24,34 +31,34 @@ Then create your PHP-Json Object
 	// Just send a raw JSON ; {}
 	$Json = new json();
 
-The 'type' parameter could be 'function', 'var' or blank.
-
-The 'name' parameter is the name of the callbak/variable.
-
-Next, add the objects, property, array you want.
-
+  // Add some content
 	$Json->addContent(new propertyJson('width', '565px'));
 	$Json->addContent(new textJson('You are logged IN'));
 	$Json->addContent(new objectJson('An_Object', $object));
 	$Json->addContent(new arrayJson("An_Array",$arraytest));
 	$Json->addContent(new jsonJson("A_Json",$jsonOnly));
 
-Finally, send the JSON.
+  // Finally, send the JSON.
 
 	json_send($Json)
+```
 
 addContent:
 --------
 
 The propertyJson allow you to send a variable or a debug information :
 
+```php
 	$Json->addContent(new propertyJson('width', '565px'));
 	> {"width" : "565px"}
+```
 
 The textJson is just a propertyJSON with the "text" name. It results in :
 
+```php
 	$Json->addContent(new textJson('You are logged IN'));
 	> {"text" : "You are logged IN"}
+```
 
 The objectJson makes you able to send your object and give him a name :
 
@@ -64,15 +71,19 @@ The objectJson makes you able to send your object and give him a name :
 
 The arrayJson makes you able to send your array and give him a name :
 
+```php
 	$arraytest = array('1','2','3');
 	$Json->addContent(new arrayJson("An_Array",$arraytest));
 	> {"An_Array": ["1","2","3"]}
+```
 
 The jsonJson makes you able to send any preformated JSON text. There is no verification and it is "unsafe" to use because you could break your JSON. Use at your own risk
 
+```php
 	$jsonOnly = '{"Hello" : "darling"}';
 	$Json->addContent(new jsonJson("A_Json",$jsonOnly));
 	> {"A_Json": {"Hello" : "darling"}}
+```
 
 Extend the class
 ----------
@@ -80,6 +91,7 @@ Extend the class
 I think the class is complete, but maybe you need something special like a complex content, you can extend the 'content' abstract class. 
 Then define the $json variable with the JSON text in the constructor.
 Make sure there is a comma at the end.
+If your class is meaningful for any user, feel free to contact me to add it in the lib.
 
 ```php
 class userDataJSON extends content {
@@ -97,8 +109,10 @@ Validating JSON
 ----------
 
 To validate the JSON, you can grab back the JSON string via the make() method then pass it through an other library.
-	
+
+```php
 	$JsonString = $Json->make();
+```
 
 Knows dumb errors
 ----------
