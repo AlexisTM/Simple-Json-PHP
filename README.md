@@ -11,11 +11,11 @@ With this library, you will be able to store the *JSON in a variable*, *fire a c
 
 Usage
 -------
-To use create your own JSON API, you just need to include the 'include.php' file.
+To use the JSON class, you just need to include the 'json.php' file.
 	
 	include('includes/json.php');
 
-Then create your PHP Object
+Then create your PHP-Json Object
 	
 	// Set a variable ; var name = {}
 	$Json = new json('var', 'name'); 
@@ -55,10 +55,12 @@ The textJson is just a propertyJSON with the "text" name. It results in :
 
 The objectJson makes you able to send your object and give him a name :
 
+```php
 	$object = new stdClass();
 	$object->test = 'OK';
 	$Json->addContent(new objectJson('An_Object', $object));
 	> {"An_Object" , {"test" : "OK"}}
+```
 
 The arrayJson makes you able to send your array and give him a name :
 
@@ -72,10 +74,29 @@ The jsonJson makes you able to send any preformated JSON text. There is no verif
 	$Json->addContent(new jsonJson("A_Json",$jsonOnly));
 	> {"A_Json": {"Hello" : "darling"}}
 
+Extend the class
+----------
+
+I think the class is complete, but maybe you need something special like a complex content, you can extend the 'content' abstract class. 
+Then define the $json variable with the JSON text in the constructor.
+Make sure there is a comma at the end.
+
+```php
+class userDataJSON extends content {
+  public function __construct($status, $username, $data){
+    $jsonString = (new propertyJson('Status', $status))->getJSON();
+    $jsonString .= (new propertyJson('Username', $username))->getJSON();
+    $jsonString .= (new objectJson('UserData', $data))->getJSON();
+    $this->json = $jsonString;
+  }
+}
+```
+
+
 Validating JSON
 ----------
 
-To validate the JSON, you can grab back the JSON string via the make() method.
+To validate the JSON, you can grab back the JSON string via the make() method then pass it through an other library.
 	
 	$JsonString = $Json->make();
 

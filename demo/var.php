@@ -1,24 +1,24 @@
 <?php
   // The only include you need
-	include('../includes/json.php');
-	
-	// Create a raw JSON
-	$Json = new json('var', 'oneVariable');
+  include('../includes/json.php');
+  
+  // Create a raw JSON
+  $Json = new json('var', 'oneVariable');
 
-	// Define objects to send
-	$object = new stdClass();
-	$object->test = 'OK';
-	$arraytest = array('1','2','3');
-	$jsonOnly = '{"Hello" : "darling"}';
+  // Define objects to send
+  $object = new stdClass();
+  $object->test = 'OK';
+  $arraytest = array('1','2','3');
+  $jsonOnly = '{"Hello" : "darling"}';
 
-	// Add objects to send
-	$Json->addContent(new propertyJson('width', '565px'));
-	$Json->addContent(new textJson('You are logged IN'));
-	$Json->addContent(new objectJson('An_Object', $object));
-	$Json->addContent(new arrayJson("An_Array",$arraytest));
-	$Json->addContent(new jsonJson("A_Json",$jsonOnly));
+  // Add objects to send
+  $Json->addContent(new propertyJson('width', '565px'));
+  $Json->addContent(new textJson('You are logged IN'));
+  $Json->addContent(new objectJson('An_Object', $object));
+  $Json->addContent(new arrayJson("An_Array",$arraytest));
+  $Json->addContent(new jsonJson("A_Json",$jsonOnly));
 
-	/*
+  /*
   Expected result : 
   var oneVariable = {
     "width"     : "565px",
@@ -38,6 +38,6 @@
   PASSED
   //*/
 
-	// Send the JSON
-	json_send($Json);
+  // Send the JSON
+  json_send($Json);
 ?>
