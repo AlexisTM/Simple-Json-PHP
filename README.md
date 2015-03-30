@@ -19,28 +19,28 @@ Usage
 -------
 
 ```php
-  // Include the json class
-	include('includes/json.php');
+// Include the json class
+include('includes/json.php');
 
-  // Then create the PHP-Json Object to suits your needs
+// Then create the PHP-Json Object to suits your needs
 
-	// Set a variable ; var name = {}
-	$Json = new json('var', 'name'); 
-	// Fire a callback ; callback({});
-	$Json = new json('callback', 'name'); 
-	// Just send a raw JSON ; {}
-	$Json = new json();
+// Set a variable ; var name = {}
+$Json = new json('var', 'name'); 
+// Fire a callback ; callback({});
+$Json = new json('callback', 'name'); 
+// Just send a raw JSON ; {}
+$Json = new json();
 
-  // Add some content
-	$Json->addContent(new propertyJson('width', '565px'));
-	$Json->addContent(new textJson('You are logged IN'));
-	$Json->addContent(new objectJson('An_Object', $object));
-	$Json->addContent(new arrayJson("An_Array",$arraytest));
-	$Json->addContent(new jsonJson("A_Json",$jsonOnly));
+// Add some content
+$Json->addContent(new propertyJson('width', '565px'));
+$Json->addContent(new textJson('You are logged IN'));
+$Json->addContent(new objectJson('An_Object', $object));
+$Json->addContent(new arrayJson("An_Array",$arraytest));
+$Json->addContent(new jsonJson("A_Json",$jsonOnly));
 
-  // Finally, send the JSON.
+// Finally, send the JSON.
 
-	json_send($Json)
+json_send($Json)
 ```
 
 addContent:
@@ -49,40 +49,40 @@ addContent:
 The propertyJson allow you to send a variable or a debug information :
 
 ```php
-	$Json->addContent(new propertyJson('width', '565px'));
-	> {"width" : "565px"}
+$Json->addContent(new propertyJson('width', '565px'));
+> {"width" : "565px"}
 ```
 
 The textJson is just a propertyJSON with the "text" name. It results in :
 
 ```php
-	$Json->addContent(new textJson('You are logged IN'));
-	> {"text" : "You are logged IN"}
+$Json->addContent(new textJson('You are logged IN'));
+> {"text" : "You are logged IN"}
 ```
 
 The objectJson makes you able to send your object and give him a name :
 
 ```php
-	$object = new stdClass();
-	$object->test = 'OK';
-	$Json->addContent(new objectJson('An_Object', $object));
-	> {"An_Object" , {"test" : "OK"}}
+$object = new stdClass();
+$object->test = 'OK';
+$Json->addContent(new objectJson('An_Object', $object));
+> {"An_Object" , {"test" : "OK"}}
 ```
 
 The arrayJson makes you able to send your array and give him a name :
 
 ```php
-	$arraytest = array('1','2','3');
-	$Json->addContent(new arrayJson("An_Array",$arraytest));
-	> {"An_Array": ["1","2","3"]}
+$arraytest = array('1','2','3');
+$Json->addContent(new arrayJson("An_Array",$arraytest));
+> {"An_Array": ["1","2","3"]}
 ```
 
 The jsonJson makes you able to send any preformated JSON text. There is no verification and it is "unsafe" to use because you could break your JSON. Use at your own risk
 
 ```php
-	$jsonOnly = '{"Hello" : "darling"}';
-	$Json->addContent(new jsonJson("A_Json",$jsonOnly));
-	> {"A_Json": {"Hello" : "darling"}}
+$jsonOnly = '{"Hello" : "darling"}';
+$Json->addContent(new jsonJson("A_Json",$jsonOnly));
+> {"A_Json": {"Hello" : "darling"}}
 ```
 
 Extend the class
@@ -111,7 +111,7 @@ Validating JSON
 To validate the JSON, you can grab back the JSON string via the make() method then pass it through an other library.
 
 ```php
-	$JsonString = $Json->make();
+$JsonString = $Json->make();
 ```
 
 Knows dumb errors
@@ -157,3 +157,5 @@ Credits
 --------
 
 Alexis PAQUES
+
+Sébastien COMBÉFIS (for Travis integration)
