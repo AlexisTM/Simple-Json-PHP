@@ -138,9 +138,21 @@ This library give you a strong JSON API capabilities. But an API is useless if y
 $.ajax({
   dataType: "json",
   url: 'http://example.com',
-  data: {data},
-  done: callback
+  data: data,
+  done: function(json) {
+    alert(json);
+  }
 }); 
+```
+
+#### Callback with a raw json using JQuery.getJSON 
+
+```javascript
+$.getJSON('http://example.com',
+data,
+function(json) {
+  alert(json);
+});
 ```
 
 #### Legacy javascript for dynamic loading for JSONP
