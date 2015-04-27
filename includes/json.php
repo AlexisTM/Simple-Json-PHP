@@ -1,96 +1,92 @@
 <?php
-  // type : 'function' or 'var' or 'raw'
+
+  class content {
+    private $json;
+    public function __construct($name, $content, $enc = true){
+      if($enc) $content = json_encode($content);
+      $this->json = "\"{$name}\": {$content},";
+    }
+    public function get(){
+      return $this->json;
+    }
+  }
+
   class json {
     private $type;
     private $callback;
     private $contents = array();
 
     public function __construct($type='raw', $callback='none'){
-      if(!($type == 'callback' OR $type == 'var' OR $type == 'raw')) $type = 'raw';
+      if(!($type == 'callback' OR $type == 'var')) $type = 'raw';
       $this->type = $type;
       $this->callback = $callback;
     }
 
-    public function addContent($content){
-      if(get_parent_class($content) == 'content') array_push($this->contents, $content);
+    public function add($name='message', $content = true, $enc = true){
+      $dum = new content($name, $content, $enc);
+      array_push($this->contents, $dum);
+      return true;
+
+      $error = json_last_error();
+      if($error  != JSON_ERROR_NONE){
+        switch (json_last_error()) {
+          case JSON_ERROR_DEPTH:
+            $text = "Maximum stack depth exceeded";
+          break;
+          case JSON_ERROR_STATE_MISMATCH:
+            $text = "Underflow or the modes mismatch";
+          break;
+          case JSON_ERROR_CTRL_CHAR:
+            $text = "Unexpected control character found";
+          break;
+          case JSON_ERROR_SYNTAX:
+            $text = "Syntax error, malformed JSON";
+          break;
+          case JSON_ERROR_UTF8:
+            $text = "Malformed UTF-8 characters, possibly incorrectly encoded";
+          break;
+          default:
+            $text = "Unknown error";
+          break;
+          $dum = new dummy("error", $text);
+        }
+        array_push($this->contents, $content);
+      }
+      return false;
     }
 
-    public function json_make(){
+    public function make(){
       $jsonText = "";
-      // Callback case
-      if($this->type == 'var'){
-        $jsonText .= "var {$this->callback} = ";
-      }
-      elseif ($this->type == 'callback'){
-        $jsonText .="{$this->callback}(";
-      }
 
-      // Begin of Encapsulate JSON
+      if($this->type == 'var')
+        $jsonText .= "var {$this->callback} = ";
+      elseif ($this->type == 'callback')
+        $jsonText .="{$this->callback}(";
       $jsonText .= '{';
-      // Data
       if(is_array($this->contents)){
         foreach($this->contents as $content){
-          $jsonText .= $content->getJSON();
+          $jsonText .= $content->get();
         }
       }
-      // Remove the last comma
+
       $jsonText = trim($jsonText, ', ');
 
       $jsonText .= '}';
       // End of encapsulate JSON
-      if ($this->type == 'var'){
+      if ($this->type == 'var')
         $jsonText .= ';';
-      } elseif ($this->type == 'callback'){
+      elseif ($this->type == 'callback')
         $jsonText .= ');';
-      }
+      
       return $jsonText;
     }
-  }
 
-  abstract class content {
-    public $json;
-    public function getJSON(){
-      return $this->json;
-    }
-  }
-  class objectJson extends content {
-    public function __construct($name, $object){
-      $stringifiedObject = json_encode($object);
-      $this->json = "\"{$name}\": {$stringifiedObject},";
+    public function send(){
+      header('Cache-Control: no-cache, must-revalidate');
+      header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+      header('Content-type: application/json');
+      print $this->make();
     }
   }
   
-  class arrayJson extends content {
-    public function __construct($name, $array){
-      $stringifiedArray = json_encode($array);
-      $this->json = "\"{$name}\": {$stringifiedArray},";
-    }
-  }
-  
-  class propertyJson extends content {
-    public function __construct($name, $value){
-      $value = addslashes($value);
-      $this->json = "\"{$name}\": \"{$value}\",";
-    }
-  }
-
-  class jsonJson extends content {
-    public function __construct($name, $value){
-      //$value = addslashes($value);
-      $this->json = "\"{$name}\": {$value},";
-    }
-  }
-  
-  class textJson extends content {
-    public function __construct($value){
-      $this->json = "\"Text\": \"{$value}\",";
-    }
-  }
-  
-  function json_send($json){
-    header('Cache-Control: no-cache, must-revalidate');
-    header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-    header('Content-type: application/json');//*/
-    echo $json->json_make();
-  }
 ?>

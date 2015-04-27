@@ -4,75 +4,83 @@ class Phpunit extends PHPUnit_Framework_TestCase
 {
     public function testRaw()
     {
-        $Json = new json();
-        $this->buildJson($Json);
-        $this->assertEquals($Json->json_make(),
-            '{"width": "565px","Text": "You are logged IN","An_Object": {"test":"OK"},"An_Array": ["1","2","3"],"A_Json": {"Hello" : "darling"}}');
+        $json = new json();
+        $this->buildJson($json);
+        $this->assertEquals($json->make(),
+            '{"status": "200","worked": true,"things": false,"friend": {"FirstName":"John","LastName":"Doe"},"arrays": [1,"2","Pieter",true],"json": {"Hello" : "darling"}}');
     }
     public function testFunction()
     {
-        $Json = new json('callback', 'function');
-        $this->buildJson($Json);
-        $this->assertEquals($Json->json_make(),
-            'function({"width": "565px","Text": "You are logged IN","An_Object": {"test":"OK"},"An_Array": ["1","2","3"],"A_Json": {"Hello" : "darling"}});');
+        $json = new json('callback', 'function');
+        $this->buildJson($json);
+        $this->assertEquals($json->make(),
+            'function({"status": "200","worked": true,"things": false,"friend": {"FirstName":"John","LastName":"Doe"},"arrays": [1,"2","Pieter",true],"json": {"Hello" : "darling"}});');
     }
     public function testVar()
     {
-        $Json = new json('var', 'name');
-        $this->buildJson($Json);
-        $this->assertEquals($Json->json_make(),
-            'var name = {"width": "565px","Text": "You are logged IN","An_Object": {"test":"OK"},"An_Array": ["1","2","3"],"A_Json": {"Hello" : "darling"}};');
+        $json = new json('var', 'name');
+        $this->buildJson($json);
+        $this->assertEquals($json->make(),
+            'var name = {"status": "200","worked": true,"things": false,"friend": {"FirstName":"John","LastName":"Doe"},"arrays": [1,"2","Pieter",true],"json": {"Hello" : "darling"}};');
     }
-    private function buildJson($Json){
+    private function buildJson($json){
         $object = new stdClass();
-        $object->test = 'OK';
-
-        $arraytest = array('1','2','3');
+        $object->FirstName = 'John';
+        $object->LastName = 'Doe';
+        $array = array(1,'2', 'Pieter', true);
         $jsonOnly = '{"Hello" : "darling"}';
-
-        $Json->addContent(new propertyJson('width', '565px'));
-        $Json->addContent(new textJson('You are logged IN'));
-        $Json->addContent(new objectJson('An_Object', $object));
-        $Json->addContent(new arrayJson("An_Array",$arraytest));
-        $Json->addContent(new jsonJson("A_Json",$jsonOnly));
+        // Add objects to send
+        $json->add('status', '200');
+        $json->add("worked");
+        $json->add("things", false);
+        $json->add('friend', $object);
+        $json->add("arrays", $array);
+        $json->add("json", $jsonOnly, false);
     }
     public function testPropertyJson()
     {
-        $Json = new json();
-        $Json->addContent(new propertyJson('width', '565px'));
-        $this->assertEquals($Json->json_make(),
+        $json = new json();
+        $json->add('width', '565px');
+        $this->assertEquals($json->make(),
             '{"width": "565px"}');
     }
-    public function testTextJson()
+    public function testBoolDef()
     {
-        $Json = new json();
-        $Json->addContent(new textJson('You are logged IN'));
-        $this->assertEquals($Json->json_make(),
-            '{"Text": "You are logged IN"}');
+        $json = new json();
+        $json->add('success');
+        $this->assertEquals($json->make(),
+            '{"success": true}');
+    }
+    public function testBool()
+    {
+        $json = new json();
+        $json->add('success', false);
+        $this->assertEquals($json->make(),
+            '{"success": false}');
     }
     public function testArrayJson()
     {
-        $Json = new json();
+        $json = new json();
         $arraytest = array('1','2','3');
-        $Json->addContent(new arrayJson("An_Array",$arraytest));
-        $this->assertEquals($Json->json_make(),
+        $json->add("An_Array",$arraytest);
+        $this->assertEquals($json->make(),
             '{"An_Array": ["1","2","3"]}');
     }
     public function testJsonJson()
     {
-        $Json = new json();
+        $json = new json();
         $jsonOnly = '{"Hello" : "darling"}';
-        $Json->addContent(new jsonJson("A_Json",$jsonOnly));
-        $this->assertEquals($Json->json_make(),
+        $json->add("A_Json",$jsonOnly, false);
+        $this->assertEquals($json->make(),
             '{"A_Json": {"Hello" : "darling"}}');
     }
     public function testObjectJson()
     {
-        $Json = new json();
+        $json = new json();
         $object = new stdClass();
         $object->test = 'OK';
-        $Json->addContent(new objectJson('An_Object', $object));
-        $this->assertEquals($Json->json_make(),
+        $json->add('An_Object', $object);
+        $this->assertEquals($json->make(),
             '{"An_Object": {"test":"OK"}}');
     }
 }

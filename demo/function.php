@@ -3,41 +3,48 @@
   include('../includes/json.php');
   
   // Create a raw JSON
-  $Json = new json('callback', 'console.log');
+  $json = new json('callback', 'console.log');
 
   // Define objects to send
   $object = new stdClass();
-  $object->test = 'OK';
-  $arraytest = array('1','2','3');
+  $object->FirstName = 'John';
+  $object->LastName = 'Doe';
+  $array = array(1,'2', 'Pieter', true);
   $jsonOnly = '{"Hello" : "darling"}';
-
   // Add objects to send
-  $Json->addContent(new propertyJson('width', '565px'));
-  $Json->addContent(new textJson('You are logged IN'));
-  $Json->addContent(new objectJson('An_Object', $object));
-  $Json->addContent(new arrayJson("An_Array",$arraytest));
-  $Json->addContent(new jsonJson("A_Json",$jsonOnly));
+  $json->add('status', '200');
+  $json->add("worked");
+  $json->add("things", false);
+  $json->add('friend', $object);
+  $json->add("arrays", $array);
+  $json->add("json", $jsonOnly, false);
 
   /*
   Expected result : 
   console.log({
-    "width"     : "565px",
-    "text"      : "You are logged IN",
-    "An_Object" : { "test" : "OK"},
-    "An_Array"  : ["1","2","3"],
-    "A_Json"    : { "Hello" : "Darling"}
+    "status": "200",
+    "worked": true,
+    "things": false,
+    "friend": {
+        "FirstName": "John",
+        "LastName": "Doe"
+    },
+    "arrays": [
+        1,
+        "2",
+        "Pieter",
+        true
+    ],
+    "json": {
+        "Hello": "darling"
+    }
   });
 
   Result : 
-  console.log({"width": "565px","Text": "You are logged IN","An_Object": {"test":"OK"},"An_Array": ["1","2","3"],"A_Json": {"Hello" : "darling"}});
-  
-  Result in Chrome console : 
-  > console.log({"width": "565px","Text": "You are logged IN","An_Object": {"test":"OK"},"An_Array": ["1","2","3"],"A_Json": {"Hello" : "darling"}});
-  > Object {width: "565px", Text: "You are logged IN", An_Object: Object, An_Array: Array[3], A_Json: Object}
-
+  console.log({"status": "200","worked": true,"things": false,"friend": {"FirstName":"John","LastName":"Doe"},"arrays": [1,"2","Pieter",true],"json": {"Hello" : "darling"}});
   PASSED
   //*/
 
   // Send the JSON
-  json_send($Json);
+  $json->send();
 ?>
