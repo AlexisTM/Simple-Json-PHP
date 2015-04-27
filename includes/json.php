@@ -4,7 +4,33 @@
     private $json;
     public function __construct($name, $content, $enc = true){
       if($enc) $content = json_encode($content);
-      $this->json = "\"{$name}\": {$content},";
+      $error = json_last_error();
+      if($error  != JSON_ERROR_NONE){
+        switch (json_last_error()) {
+          case JSON_ERROR_DEPTH:
+            $errorMessage = '"Maximum stack depth exceeded"';
+          break;
+          case JSON_ERROR_STATE_MISMATCH:
+            $errorMessage = '"Underflow or the modes mismatch"';
+          break;
+          case JSON_ERROR_CTRL_CHAR:
+            $errorMessage = '"Unexpected control character found"';
+          break;
+          case JSON_ERROR_SYNTAX:
+            $errorMessage = '"Syntax error, malformed JSON"';
+          break;
+          case JSON_ERROR_UTF8:
+            $errorMessage = '"Malformed UTF-8 characters, possibly incorrectly encoded"';
+          break;
+          default:
+            $errorMessage = '"Unknown error"';
+          break;
+        }
+        $this->json = "\"{$name}\": {$errorMessage},";
+      }
+      else {
+        $this->json = "\"{$name}\": {$content},";
+      }
     }
     public function get(){
       return $this->json;
@@ -26,33 +52,6 @@
       $dum = new content($name, $content, $enc);
       array_push($this->contents, $dum);
       return true;
-
-      $error = json_last_error();
-      if($error  != JSON_ERROR_NONE){
-        switch (json_last_error()) {
-          case JSON_ERROR_DEPTH:
-            $text = "Maximum stack depth exceeded";
-          break;
-          case JSON_ERROR_STATE_MISMATCH:
-            $text = "Underflow or the modes mismatch";
-          break;
-          case JSON_ERROR_CTRL_CHAR:
-            $text = "Unexpected control character found";
-          break;
-          case JSON_ERROR_SYNTAX:
-            $text = "Syntax error, malformed JSON";
-          break;
-          case JSON_ERROR_UTF8:
-            $text = "Malformed UTF-8 characters, possibly incorrectly encoded";
-          break;
-          default:
-            $text = "Unknown error";
-          break;
-          $dum = new dummy("error", $text);
-        }
-        array_push($this->contents, $content);
-      }
-      return false;
     }
 
     public function make(){
