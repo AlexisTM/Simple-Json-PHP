@@ -19,95 +19,112 @@ Usage
 -------
 
 ```php
-// Include the json class
-include('includes/json.php');
+<?php
 
-// Then create the PHP-Json Object to suits your needs
+  include('../includes/json.php');
 
-// Set a variable ; var name = {}
-$Json = new json('var', 'name'); 
-// Fire a callback ; callback({});
-$Json = new json('callback', 'name'); 
-// Just send a raw JSON ; {}
-$Json = new json();
+  $json = new json();
 
-// Build data
-$object = new stdClass();
-$object->test = 'OK';
-$arraytest = array('1','2','3');
-$jsonOnly = '{"Hello" : "darling"}';
+  $object = new stdClass();
+  $object->FirstName = 'John';
+  $object->LastName = 'Doe';
+  $array = array(1,'2', 'Pieter', true);
+  $jsonOnly = '{"Hello" : "darling"}';
 
-// Add it to our JSON
-$Json->addContent(new propertyJson('width', '565px'));
-$Json->addContent(new textJson('You are logged IN'));
-$Json->addContent(new objectJson('An_Object', $object));
-$Json->addContent(new arrayJson("An_Array",$arraytest));
-$Json->addContent(new jsonJson("A_Json",$jsonOnly));
+  $json->add('status', '200');
+  $json->add("worked");
+  $json->add("things", false);
+  $json->add('friend', $object);
+  $json->add("arrays", $array);
+  $json->add("json", $jsonOnly, false);
 
-// Finally, send the JSON.
-
-json_send($Json)
+  $json->send();
+?>
 ```
 
-addContent:
---------
+new json($type = 'raw', callback='none')
+------------------------------------------
 
-The propertyJson allow you to send a variable or a debug information :
+The constructor allow you to send JSON, JSONP with callback or in a variable. 
+
+### Raw JSON
 
 ```php
-$Json->addContent(new propertyJson('width', '565px'));
-> {"width" : "565px"}
+  $json = new json();
+  > {  ...  }
 ```
 
-The textJson is just a propertyJSON with the "text" name. It results in :
+### Callback JSONP
 
 ```php
-$Json->addContent(new textJson('You are logged IN'));
-> {"text" : "You are logged IN"}
+  $json = new json('callback', 'myCallback');
+  > myCallback({  ...  });
 ```
 
-The objectJson makes you able to send your object and give him a name :
+### Varibale JSONP
 
 ```php
-$object = new stdClass();
-$object->test = 'OK';
-$Json->addContent(new objectJson('An_Object', $object));
-> {"An_Object" , {"test" : "OK"}}
+  $json = new json('var', 'myVariable');
+  > var myVariable = {  ...  };
 ```
 
-The arrayJson makes you able to send your array and give him a name :
+add($name, $content = true, $encode = true)
+-------------------------------------------
+
+The add method allow you to send anything and convert it to json with ease :
+
+### Simple property, could be text, boolean, integer, float, object or array
 
 ```php
-$arraytest = array('1','2','3');
-$Json->addContent(new arrayJson("An_Array",$arraytest));
-> {"An_Array": ["1","2","3"]}
+  $json->add('status', 200);
+> {"status" : 200}
 ```
 
-The jsonJson makes you able to send any preformated JSON text. There is no verification and it is "unsafe" to use because you could break your JSON. Use at your own risk
+### Bool status : Omit the content and it will send "true" instead. 
 
 ```php
-$jsonOnly = '{"Hello" : "darling"}';
-$Json->addContent(new jsonJson("A_Json",$jsonOnly));
-> {"A_Json": {"Hello" : "darling"}}
+  $json->add('status');
+> {"status" : true}
+```
+
+### If you have a preformated correct JSON, you can add it by setting 'encode' to false, there is no verification, responsability is yours
+
+```php
+$jsonOnly = '{"Hello" : "Darling"}';
+$json->add("json", $jsonOnly, false);
+> $json->add("json", $jsonOnly, false);
 ```
 
 Extend the class
 ----------
 
-I think the class is complete, but maybe you need something special like a complex content, you can extend the 'content' abstract class. 
-Then define the $json variable with the JSON text in the constructor.
-Make sure there is a comma at the end.
-If your class is meaningful for any user, feel free to contact me to add it in the lib.
+Maybe you need something special like a complex default content, you can extend the 'content' abstract class. 
+Then define the $json variable with the JSON text in the constructor. Make sure there is a comma at the end.
+
+Then you can add it like a "raw JSON" by disabling encoding.
+
 
 ```php
-class userDataJSON extends content {
-  public function __construct($status, $username, $data){
-    $jsonString = (new propertyJson('Status', $status))->getJSON();
-    $jsonString .= (new propertyJson('Username', $username))->getJSON();
-    $jsonString .= (new objectJson('UserData', $data))->getJSON();
-    $this->json = $jsonString;
+  $json = new json();
+
+  class userDataJSON extends content {
+    public function __construct($status, $username, $data){
+      $json = new json();
+      $json->add('Status', $status);
+      $json->add('Username', $username);
+      $json->add('UserData', $data);
+      $json->add('Success');
+      $this->json = $json->make();
+    }
+    public function get(){
+      return $this->json;
+    }
   }
-}
+
+  $userData = new userDataJSON('Online', 'AlexisTM', $object);
+  
+  // Add objects to send as "pure JSON"
+  $json->add('data', $userData->get(), false);
 ```
 
 
