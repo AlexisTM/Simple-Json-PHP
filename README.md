@@ -31,7 +31,13 @@ $Json = new json('callback', 'name');
 // Just send a raw JSON ; {}
 $Json = new json();
 
-// Add some content
+// Build data
+$object = new stdClass();
+$object->test = 'OK';
+$arraytest = array('1','2','3');
+$jsonOnly = '{"Hello" : "darling"}';
+
+// Add it to our JSON
 $Json->addContent(new propertyJson('width', '565px'));
 $Json->addContent(new textJson('You are logged IN'));
 $Json->addContent(new objectJson('An_Object', $object));
