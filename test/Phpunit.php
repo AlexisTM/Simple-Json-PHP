@@ -1,5 +1,5 @@
 <?php
-require('./includes/json5.2.php');
+require('./includes/json.php');
 class Phpunit extends PHPUnit_Framework_TestCase
 {
     public function testRaw()
