@@ -47,21 +47,21 @@ new json($type = 'raw', callback='none')
 
 The constructor allow you to send JSON, JSONP with callback or in a variable. 
 
-### Raw JSON
+#### Raw JSON
 
 ```php
   $json = new json();
   > {  ...  }
 ```
 
-### Callback JSONP
+#### Callback JSONP
 
 ```php
   $json = new json('callback', 'myCallback');
   > myCallback({  ...  });
 ```
 
-### Varibale JSONP
+#### Varibale JSONP
 
 ```php
   $json = new json('var', 'myVariable');
@@ -73,21 +73,21 @@ add($name, $content = true, $encode = true)
 
 The add method allow you to send anything and convert it to json with ease :
 
-### Simple property, could be text, boolean, integer, float, object or array
+#### Simple property, could be text, boolean, integer, float, object or array
 
 ```php
   $json->add('status', 200);
 > {"status" : 200}
 ```
 
-### Bool status : Omit the content and it will send "true" instead. 
+#### Bool status : Omit the content and it will send "true" instead. 
 
 ```php
   $json->add('status');
 > {"status" : true}
 ```
 
-### If you have a preformated correct JSON, you can add it by setting 'encode' to false, there is no verification, responsability is yours
+#### If you have a preformated correct JSON, you can add it by setting 'encode' to false, there is no verification, responsability is yours
 
 ```php
 $jsonOnly = '{"Hello" : "Darling"}';
@@ -127,6 +127,37 @@ Then you can add it like a "raw JSON" by disabling encoding.
   $json->add('data', $userData->get(), false);
 ```
 
+HTML/JS part example
+----------
+
+This library give you a strong JSON API capabilities. But an API is useless if you do not have the front-end. Here are some examples.
+
+#### Callback with a raw json using JQuery.ajax 
+
+```javascript
+$.ajax({
+  dataType: "json",
+  url: 'http://example.com',
+  data: {data},
+  done: callback
+}); 
+```
+
+#### Legacy javascript for dynamic loading for JSONP
+
+```javascript
+function load_script(url) {
+  var s = document.createElement('script'); 
+  s.src = url;
+  document.body.appendChild(s);
+}
+
+function load_scripts() {
+  load_script('http://json.api/users/list');
+}
+
+window.onload=load_scripts;
+```
 
 Validating JSON
 ----------
