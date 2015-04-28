@@ -92,7 +92,7 @@ The add method allow you to send anything and convert it to json with ease :
 ```php
 $jsonOnly = '{"Hello" : "Darling"}';
 $json->add("json", $jsonOnly, false);
-> $json->add("json", $jsonOnly, false);
+> {"json" : {"Hello" : "Darling"}}
 ```
 
 Extend the class
