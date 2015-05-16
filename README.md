@@ -6,6 +6,7 @@ Introduction
 Simple JSON for PHP makes you able to create your own JSON-API easily by passing PHP objects, PHP Array, JsonString or adding a single property.
 
 Pros : 
+* Can output Object or Array
 * Easy      : Coded with PHP Objects
 * Fast      : JSON are encoded with the native json_encode()
 * Reliable  : Headers are send automatically
@@ -14,6 +15,9 @@ Pros :
 * Callback/Variable or raw option 
 * JSONP compatible
 * JQuery compatible
+
+Cons : 
+* Optimized for objects because JSON is an object notation.
 
 Usage
 -------
@@ -38,7 +42,11 @@ Usage
   $json->add("arrays", $array);
   $json->add("json", $jsonOnly, false);
 
+  // This will output the legacy JSON
   $json->send();
+
+  // This will output the array, omitting names
+  // $json->send_array();
 ?>
 ```
 
@@ -78,6 +86,8 @@ The add method allow you to send anything and convert it to json with ease :
 ```php
   $json->add('status', 200);
 > {"status" : 200}
+// array
+> [200]
 ```
 
 #### Bool status : Omit the content and it will send "true" instead. 
@@ -85,6 +95,8 @@ The add method allow you to send anything and convert it to json with ease :
 ```php
   $json->add('status');
 > {"status" : true}
+// array
+> [true]
 ```
 
 #### If you have a preformated correct JSON, you can add it by setting 'encode' to false, there is no verification, responsability is yours
@@ -93,7 +105,11 @@ The add method allow you to send anything and convert it to json with ease :
 $jsonOnly = '{"Hello" : "Darling"}';
 $json->add("json", $jsonOnly, false);
 > {"json" : {"Hello" : "Darling"}}
+// array
+> [{"Hello" : "Darling"}] 
 ```
+
+### NOTE : For people who wants an array as output, you can use $json->send_array(); which will ommit names. 
 
 Extend the class
 ----------
@@ -115,6 +131,7 @@ Then you can add it like a "raw JSON" by disabling encoding.
       $json->add('UserData', $data);
       $json->add('Success');
       $this->json = $json->make();
+      //$this->json = $json->make_array();
     }
     public function get(){
       return $this->json;
@@ -178,12 +195,15 @@ To validate the JSON, you can grab back the JSON string via the make() method th
 
 ```php
 $JsonString = $Json->make();
+// $JsonString = $Json->make_array();
 ```
 
 Knows dumb errors
 ----------
 
-The file format of the PHP script MUST be UTF-8 *Without* BOM. Else the JSON is corrupted for the JQuery AJAX request. You can bypass the file format by asking text and not JSON type in the JQuery request and using JSON.Parse yourself.
+The file format of the PHP script MUST be UTF-8 *Without* BOM. 
+Else the JSON is corrupted for the JQuery AJAX request. 
+You can bypass the file format by asking text and not JSON type in the JQuery request and using JSON.Parse yourself.
 
 You MAY NOT use ANY echo in the script. The only things that can write on the page is json_send()! Else it corrupt again the json.
 
