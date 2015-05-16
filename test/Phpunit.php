@@ -2,6 +2,13 @@
 require('./includes/json.php');
 class Phpunit extends PHPUnit_Framework_TestCase
 {
+    public function testRaw_array()
+    {
+        $json = new json();
+        $this->buildJson($json);
+        $this->assertEquals($json->make_array(),
+            '["200",true,false,{"FirstName":"John","LastName":"Doe"},[1,"2","Pieter",true],{"Hello" : "darling"}]');
+    }
     public function testRaw()
     {
         $json = new json();
@@ -16,12 +23,26 @@ class Phpunit extends PHPUnit_Framework_TestCase
         $this->assertEquals($json->make(),
             'function({"status": "200","worked": true,"things": false,"friend": {"FirstName":"John","LastName":"Doe"},"arrays": [1,"2","Pieter",true],"json": {"Hello" : "darling"}});');
     }
+    public function testFunction_array()
+    {
+        $json = new json('callback', 'function');
+        $this->buildJson($json);
+        $this->assertEquals($json->make_array(),
+            'function(["200",true,false,{"FirstName":"John","LastName":"Doe"},[1,"2","Pieter",true],{"Hello" : "darling"}]);');
+    }
     public function testVar()
     {
         $json = new json('var', 'name');
         $this->buildJson($json);
         $this->assertEquals($json->make(),
             'var name = {"status": "200","worked": true,"things": false,"friend": {"FirstName":"John","LastName":"Doe"},"arrays": [1,"2","Pieter",true],"json": {"Hello" : "darling"}};');
+    }
+    public function testVar_array()
+    {
+        $json = new json('var', 'name');
+        $this->buildJson($json);
+        $this->assertEquals($json->make_array(),
+            'var name = ["200",true,false,{"FirstName":"John","LastName":"Doe"},[1,"2","Pieter",true],{"Hello" : "darling"}];');
     }
     private function buildJson($json){
         $object = new stdClass();
