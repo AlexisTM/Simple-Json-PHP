@@ -13,47 +13,33 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AlexisTM/Simple-Json-PHP.git",
-                "reference": "b6c5c4f12e100feb84e053a4ff6affb1e3ebbef4"
+                "reference": "d4388633432782320c25e7b9576905377716475a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AlexisTM/Simple-Json-PHP/zipball/b6c5c4f12e100feb84e053a4ff6affb1e3ebbef4",
-                "reference": "b6c5c4f12e100feb84e053a4ff6affb1e3ebbef4",
+                "url": "https://api.github.com/repos/AlexisTM/Simple-Json-PHP/zipball/d4388633432782320c25e7b9576905377716475a",
+                "reference": "d4388633432782320c25e7b9576905377716475a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "MyLibraryNamespace": "includes/"
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "include-path": [
-                "includes/"
+                "/includes"
             ],
             "license": [
-                "GPLv2"
+                "GNU GPLv2"
             ],
             "authors": [
                 {
                     "name": "Alexis Paques",
-                    "email": "alexis.paques@gmail.com",
-                    "homepage": "https://github.com/AlexisTM"
+                    "email": "alexis.paques@gmail.com"
                 }
             ],
-            "description": "JSONAPI makes you able to construct JSON and send the headers easily. The main purposes are speed and ease to use.",
-            "homepage": "https://github.com/AlexisTM/Simple-Json-PHP",
-            "keywords": [
-                "JSONP",
-                "api",
-                "json",
-                "jsonapi",
-                "php"
-            ],
-            "time": "2015-07-22 19:30:13"
+            "description": "Simple JSON for PHP makes you able to construct JSON and send the headers easily. The main purposes are speed and ease to use.",
+            "time": "2015-07-23 14:23:04"
         }
     ],
     "aliases": [],

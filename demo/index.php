@@ -1,6 +1,6 @@
 <?php
 
-require '../includes/json.php';
+require 'vendor/autoload.php';
 
 use \Simple;
 
