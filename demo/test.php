@@ -4,7 +4,9 @@
   include('../includes/json.php');
   
   // Create a raw JSON
+  $json = new Simple('callback', 'console.log');
   $json = new json('callback', 'console.log');
+
 
   // Define objects to send
   $object = new stdClass();
