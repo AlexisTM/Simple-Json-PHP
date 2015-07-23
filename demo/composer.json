@@ -1,0 +1,5 @@
+{
+	"require-dev" : {
+		"alexistm/simple-json-php" : "master-dev"
+	}
+}
