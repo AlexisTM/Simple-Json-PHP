@@ -224,6 +224,10 @@ For any change (entreprises), feel free to contact me.
 
 mailto:alexis.paques@gmail.com
 
+What next ?
+---------
+The next step is obviously to add routes, which is needed to make a powerful API.
+
 References
 ----------
 
