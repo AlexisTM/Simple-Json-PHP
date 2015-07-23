@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AlexisTM/Simple-Json-PHP.git",
-                "reference": "d4388633432782320c25e7b9576905377716475a"
+                "reference": "2e44c1817cb4cbfff745ad23ed8d656d59ab7d95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AlexisTM/Simple-Json-PHP/zipball/d4388633432782320c25e7b9576905377716475a",
-                "reference": "d4388633432782320c25e7b9576905377716475a",
+                "url": "https://api.github.com/repos/AlexisTM/Simple-Json-PHP/zipball/2e44c1817cb4cbfff745ad23ed8d656d59ab7d95",
+                "reference": "2e44c1817cb4cbfff745ad23ed8d656d59ab7d95",
                 "shasum": ""
             },
             "require": {
@@ -39,7 +39,7 @@
                 }
             ],
             "description": "Simple JSON for PHP makes you able to construct JSON and send the headers easily. The main purposes are speed and ease to use.",
-            "time": "2015-07-23 14:23:04"
+            "time": "2015-07-23 14:27:06"
         }
     ],
     "aliases": [],

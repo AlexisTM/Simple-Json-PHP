@@ -1,4 +1,4 @@
-<?php
+<?php namespace Simple;
 /**
  *
  * Copyright (C) 2015  PAQUES ALEXIS
@@ -20,8 +20,6 @@
  *  @copyright 2014-2015
  *  @license   https://www.gnu.org/licenses/gpl-2.0.html
  */
-
-namespace Simple;
 
   /*
    * Class content

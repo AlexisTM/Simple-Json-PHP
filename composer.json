@@ -13,5 +13,10 @@
         }
     ],
     "minimum-stability": "stable",
-    "include-path" : ["/includes"]
+    "include-path" : ["/includes"],
+    "autoload":  { 
+        "psr-0" : {
+            "\\Simple" : "includes/json.php"
+        }
+    }
 }
