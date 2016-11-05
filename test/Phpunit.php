@@ -10,6 +10,23 @@ class Phpunit extends PHPUnit_Framework_TestCase
         $this->assertEquals($json->make(),
             '{"status":200,"worked":true,"things":false,"friend":{"FirstName":"John","LastName":"Doe"},"arrays":[1,"2","Pieter",true]}');
     }
+    
+    public function testCallback()
+    {
+        $json = new json();
+        $this->buildJson($json);
+        $this->expectOutputString('callback({"status":200,"worked":true,"things":false,"friend":{"FirstName":"John","LastName":"Doe"},"arrays":[1,"2","Pieter",true]});');
+        $json->send_callback('callback');
+    }
+    
+    public function testVar()
+    {
+        $json = new json();
+        $this->buildJson($json);
+        $this->expectOutputString('var myVar = {"status":200,"worked":true,"things":false,"friend":{"FirstName":"John","LastName":"Doe"},"arrays":[1,"2","Pieter",true]};');
+        $json->send_var('myVar');
+    }
+    
     private function buildJson($json){
         $object = new stdClass();
         $object->FirstName = 'John';
