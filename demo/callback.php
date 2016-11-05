@@ -19,11 +19,11 @@
     $json->status = 'online';
     
     // Send the JSON
-    $json->send();
+    $json->send_callback('myAwesomeFunction');
   
   /*
   Expected result : 
-   {
+   myAwesomeFunction({
    	"data": {
    		"LastLog": "123456789123456",
    		"Password": "Mypassword",
@@ -32,10 +32,10 @@
    	},
    	"user": "AlexisTM",
    	"status": "online"
-   }
+   });
 
   Result : 
-  {"data":{"LastLog":"123456789123456","Password":"Mypassword","Dramatic":"Cat","Things":[1,2,3]},"user":"AlexisTM","status":"online"}
+  myAwesomeFunction({"data":{"LastLog":"123456789123456","Password":"Mypassword","Dramatic":"Cat","Things":[1,2,3]},"user":"AlexisTM","status":"online"});
   
   VALIDATED BY http://jsonlint.com/
   //*/

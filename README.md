@@ -3,16 +3,15 @@ Simple JSON for PHP  [![Build Status](https://travis-ci.org/AlexisTM/Simple-Json
 
 Introduction
 -------
-Simple JSON for PHP makes you able to create your own JSON-API easily by passing PHP objects, PHP Array, JsonString or adding a single property.
+
+Simple JSON for PHP simplify the `json_encode` function. Instead of creating a Stdclass and then json_encode it, send, headers and echo the json, you can simply create the object and use `$json->send();`.
 
 Pros : 
-* Can output Object or Array
-* Easy      : Coded with PHP Objects
+* Easy      : As simple as a Stdclass, bundled functions.
 * Fast      : JSON are encoded with the native json_encode()
-* Reliable  : Headers are send automatically
-* Modulable : You can extend the 'content' class to make a custom JSON
+* Reliable  : Headers are sent automatically
 * Complete  : You can add objects, properties or arrays
-* Callback/Variable or raw option 
+* Callback/Variable or simply a JSON option 
 * JSONP compatible
 * JQuery compatible
 
@@ -25,125 +24,84 @@ Usage
 ```php
 <?php
 
-  include('../includes/json.php');
-
-  use \Simple;
-
-  $json = new Simple\json();
-
-  $object = new stdClass();
-  $object->FirstName = 'John';
-  $object->LastName = 'Doe';
-  $array = array(1,'2', 'Pieter', true);
-  $jsonOnly = '{"Hello" : "darling"}';
-
-  $json->add('status', '200');
-  $json->add("worked");
-  $json->add("things", false);
-  $json->add('friend', $object);
-  $json->add("arrays", $array);
-  $json->add("json", $jsonOnly, false);
-
-  // This will output the legacy JSON
-  $json->send();
-
-  // This will output the array, omitting names
-  // $json->send_array();
+    include('../includes/json.php');
+  
+    use \Simple\json;
+    
+    $json = new json();
+  
+    // Ojects to send (fetched from the DB for example)
+    $object = new stdClass();
+    $object->LastLog = '123456789123456';
+    $object->Password = 'Mypassword';
+    $object->Dramatic = 'Cat';
+    $object->Things = array(1,2,3);
+    
+    // Forge the JSON
+    $json->data = $object;
+    $json->user = AlexisTM;
+    $json->status = 'online';
+    
+    // Send the JSON
+    $json->send();
 ?>
 ```
 
-new json($type = 'raw', callback='none')
-------------------------------------------
+Sending the json you want
+----------------
 
 The constructor allow you to send JSON, JSONP with callback or in a variable. 
 
-#### Raw JSON
+#### simply a JSON
 
 ```php
-  $json = new Simple\json();
+  $json->send(options);
   > {  ...  }
 ```
 
 #### Callback JSONP
 
 ```php
-  $json = new Simple\json('callback', 'myCallback');
+  $json->send_callback('myCallback', options);
   > myCallback({  ...  });
 ```
 
 #### Varibale JSONP
 
 ```php
-  $json = new Simple\json('var', 'myVariable');
+  $json->send_var('myVariable', options);
   > var myVariable = {  ...  };
 ```
 
-add($name, $content = true, $encode = true)
--------------------------------------------
+#### Options
 
-The add method allow you to send anything and convert it to json with ease :
-
-#### Simple property, could be text, boolean, integer, float, object or array
+Options are the [default options passed to json_encode](http://php.net/manual/en/function.json-encode.php#example-4366).
 
 ```php
-  $json->add('status', 200);
-> {"status" : 200}
-// array
-> [200]
+JSON_HEX_TAG 
+echo "Apos: ",    json_encode($a, JSON_HEX_APOS), "\n";
+echo "Quot: ",    json_encode($a, JSON_HEX_QUOT), "\n";
+echo "Amp: ",     json_encode($a, JSON_HEX_AMP), "\n";
+echo "Unicode: ", json_encode($a, JSON_UNESCAPED_UNICODE), "\n";
+echo "All: ",     json_encode($a, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE)
 ```
 
-#### Bool status : Omit the content and it will send "true" instead. 
+Will output : 
 
-```php
-  $json->add('status');
-> {"status" : true}
-// array
-> [true]
+```bash
+Normal: ["<foo>","'bar'","\"baz\"","&blong&","\u00e9"]
+Tags: ["\u003Cfoo\u003E","'bar'","\"baz\"","&blong&","\u00e9"]
+Apos: ["<foo>","\u0027bar\u0027","\"baz\"","&blong&","\u00e9"]
+Quot: ["<foo>","'bar'","\u0022baz\u0022","&blong&","\u00e9"]
+Amp: ["<foo>","'bar'","\"baz\"","\u0026blong\u0026","\u00e9"]
+Unicode: ["<foo>","'bar'","\"baz\"","&blong&","é"]
+All: ["\u003Cfoo\u003E","\u0027bar\u0027","\u0022baz\u0022","\u0026blong\u0026","é"]
 ```
 
-#### If you have a preformated correct JSON, you can add it by setting 'encode' to false, there is no verification, responsability is yours
+For example :
 
-```php
-$jsonOnly = '{"Hello" : "Darling"}';
-$json->add("json", $jsonOnly, false);
-> {"json" : {"Hello" : "Darling"}}
-// array
-> [{"Hello" : "Darling"}] 
-```
-
-### NOTE : For people who wants an array as output, you can use $json->send_array(); which will ommit names. 
-
-Extend the class
-----------
-
-Maybe you need something special like a complex default content, you can extend the 'content' abstract class. 
-Then define the $json variable with the JSON text in the constructor. Make sure there is a comma at the end.
-
-Then you can add it like a "raw JSON" by disabling encoding.
-
-
-```php
-  $json = new Simple\json();
-
-  class userDataJSON extends Simple\content {
-    public function __construct($status, $username, $data){
-      $json = new Simple\json();
-      $json->add('Status', $status);
-      $json->add('Username', $username);
-      $json->add('UserData', $data);
-      $json->add('Success');
-      $this->json = $json->make();
-      //$this->json = $json->make_array();
-    }
-    public function get(){
-      return $this->json;
-    }
-  }
-
-  $userData = new userDataJSON('Online', 'AlexisTM', $object);
-  
-  // Add objects to send as "pure JSON"
-  $json->add('data', $userData->get(), false);
+```php 
+$json->send(JSON_HEX_APOS | JSON_UNESCAPED_UNICODE);
 ```
 
 HTML/JS part example
@@ -197,7 +155,6 @@ To validate the JSON, you can grab back the JSON string via the make() method th
 
 ```php
 $jsonString = $json->make();
-// $jsonString = $json->make_array();
 ```
 
 Knows dumb errors
@@ -205,9 +162,9 @@ Knows dumb errors
 
 * The file format of the PHP script MUST be UTF-8 *Without* BOM.  Else the JSON is corrupted for the JQuery AJAX request. 
 * You can bypass the file format by asking text and not JSON type in the JQuery request and using JSON, then parsing it yourself.
-* You MAY NOT use ANY echo in the script. The only things that can write on the page is json_send()! Else it corrupt again the json.
-* If you use `use \Simple;`, you can call the JSON library via `Simple\json(...)`
-* If you **don't** use `use \Simple;`, you can call the JSON library via `\Simple\json(...)`
+* If you **don't** use namespaces, you can call the JSON class via `new \Simple\json()`
+* If you use `use \Simple;`, you can call the JSON class via `new Simple\json()`
+* If you use `use \Simple\json;`, you can call the JSON class via `new json()`
 
 
 Contribute
@@ -216,6 +173,13 @@ Contribute
 To contribute, just contact me! The first fork will be awesome for me!
 
 mailto:alexis.paques@gmail.com
+
+NOTE : 
+--------
+
+The reason it comes in version 4 which changes a bit the API is the speed. I as wondering how fast it was to use the library and after some tests, it shows it was 6 times slower than the native function. Therefore, for my own sake, it has to be reworked. 
+
+It now as fast as the native json_encode, without having to think at all.
 
 
 Licence
