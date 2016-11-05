@@ -2,8 +2,10 @@
   // The only include you need
   include('../includes/json.php');
   
+  
+  use \Simple;
   // Create a raw JSON
-  $json = new json('callback', 'console.log');
+  $json = new Simple\json('callback', 'console.log');
 
   // Define objects to send
   $object = new stdClass();

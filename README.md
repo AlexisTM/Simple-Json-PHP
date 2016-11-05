@@ -27,7 +27,9 @@ Usage
 
   include('../includes/json.php');
 
-  $json = new json();
+  use \Simple;
+
+  $json = new Simple\json();
 
   $object = new stdClass();
   $object->FirstName = 'John';
@@ -58,21 +60,21 @@ The constructor allow you to send JSON, JSONP with callback or in a variable.
 #### Raw JSON
 
 ```php
-  $json = new json();
+  $json = new Simple\json();
   > {  ...  }
 ```
 
 #### Callback JSONP
 
 ```php
-  $json = new json('callback', 'myCallback');
+  $json = new Simple\json('callback', 'myCallback');
   > myCallback({  ...  });
 ```
 
 #### Varibale JSONP
 
 ```php
-  $json = new json('var', 'myVariable');
+  $json = new Simple\json('var', 'myVariable');
   > var myVariable = {  ...  };
 ```
 
@@ -121,11 +123,11 @@ Then you can add it like a "raw JSON" by disabling encoding.
 
 
 ```php
-  $json = new json();
+  $json = new Simple\json();
 
-  class userDataJSON extends content {
+  class userDataJSON extends Simple\content {
     public function __construct($status, $username, $data){
-      $json = new json();
+      $json = new Simple\json();
       $json->add('Status', $status);
       $json->add('Username', $username);
       $json->add('UserData', $data);
@@ -194,18 +196,18 @@ Validating JSON
 To validate the JSON, you can grab back the JSON string via the make() method then pass it through an other library.
 
 ```php
-$JsonString = $Json->make();
-// $JsonString = $Json->make_array();
+$jsonString = $json->make();
+// $jsonString = $json->make_array();
 ```
 
 Knows dumb errors
 ----------
 
-The file format of the PHP script MUST be UTF-8 *Without* BOM. 
-Else the JSON is corrupted for the JQuery AJAX request. 
-You can bypass the file format by asking text and not JSON type in the JQuery request and using JSON.Parse yourself.
-
-You MAY NOT use ANY echo in the script. The only things that can write on the page is json_send()! Else it corrupt again the json.
+* The file format of the PHP script MUST be UTF-8 *Without* BOM.  Else the JSON is corrupted for the JQuery AJAX request. 
+* You can bypass the file format by asking text and not JSON type in the JQuery request and using JSON, then parsing it yourself.
+* You MAY NOT use ANY echo in the script. The only things that can write on the page is json_send()! Else it corrupt again the json.
+* If you use `use \Simple;`, you can call the JSON library via `Simple\json(...)`
+* If you **don't** use `use \Simple;`, you can call the JSON library via `\Simple\json(...)`
 
 
 Contribute
@@ -246,6 +248,4 @@ JSON API Standard : http://jsonapi.org/
 Credits 
 --------
 
-Alexis PAQUES
-
-Sébastien COMBÉFIS (for Travis integration)
+Alexis PAQUES (@AlexisTM)

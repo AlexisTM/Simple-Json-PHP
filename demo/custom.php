@@ -1,10 +1,12 @@
 <?php
   // The only include you need
   include('../includes/json.php');
+
+  use \Simple;
   
-  class userDataJSON extends content {
+  class userDataJSON extends Simple\content {
     public function __construct($status, $username, $data){
-      $json = new json();
+      $json = new Simple\json();
       $json->add('Status', $status);
       $json->add('Username', $username);
       $json->add('UserData', $data);
@@ -16,7 +18,7 @@
     }
   }
 
-  $json = new json();
+  $json = new Simple\json();
 
   // Define objects to send
   $object = new stdClass();

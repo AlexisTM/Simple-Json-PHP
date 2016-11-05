@@ -1,9 +1,9 @@
 <?php
+  include('../includes/json.php');
 
-require 'vendor/autoload.php';
-
-use \Simple;
-
-$json = new Simple\json('var', 'oneVariable');
-
+  use \Simple;
+  
+  $json = new Simple\json('var', 'oneVariable');
+  
+  $json->send();
 ?>

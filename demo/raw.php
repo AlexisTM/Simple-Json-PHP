@@ -2,8 +2,9 @@
   // The only include you need
   include('../includes/json.php');
 
+  use \Simple;
   // Create a raw JSON
-  $json = new json();
+  $json = new Simple\json();
 
   // Define objects to send
   $object = new stdClass();
