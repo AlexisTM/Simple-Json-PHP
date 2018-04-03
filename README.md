@@ -172,8 +172,6 @@ Contribute
 
 To contribute, just contact me! The first fork will be awesome for me!
 
-mailto:alexis.paques@gmail.com
-
 NOTE : 
 --------
 
@@ -184,14 +182,12 @@ It now as fast as the native json_encode, without having to think at all.
 
 Licence
 --------
-This work is under GPLv2 licence. Short version : You have to add Alexis Paques in the credits, you are free to use, modify and redistribute but your code must be open-source.
 
-For any change (entreprises), feel free to contact me.
-
-mailto:alexis.paques@gmail.com
+This work is under MIT licence. Short version : You have to add Alexis Paques in the credits but you can use it for closed-source commercial project.
 
 What next ?
 ---------
+
 The next step is obviously to add routes, which is needed to make a powerful API.
 
 References
