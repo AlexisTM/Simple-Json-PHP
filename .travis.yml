@@ -1,5 +1,5 @@
 language: php
 php:
-  - php: 5.4
-    dist: precise
+  - 5.4
 script: phpunit --process-isolation ./test/Phpunit
+dist: precise
