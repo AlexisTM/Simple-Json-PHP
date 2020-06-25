@@ -14,9 +14,9 @@
     ],
     "minimum-stability": "stable",
     "include-path" : ["/includes"],
-    "autoload":  { 
-        "psr-0" : {
-            "\\Simple" : "includes/json.php"
+    "autoload":  {
+        "psr-4" : {
+            "Simple\\" : "includes/"
         }
     }
 }
