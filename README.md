@@ -6,16 +6,16 @@ Introduction
 
 Simple JSON for PHP simplify the `json_encode` function. Instead of creating a Stdclass and then json_encode it, send, headers and echo the json, you can simply create the object and use `$json->send();`.
 
-Pros : 
-* Easy      : As simple as a Stdclass, bundled functions.
-* Fast      : JSON are encoded with the native json_encode()
-* Reliable  : Headers are sent automatically
-* Complete  : You can add objects, properties or arrays
+Pros: 
+* Easy: As simple as a Stdclass, bundled functions.
+* Fast: JSON are encoded with the native json_encode()
+* Reliable: Headers are sent automatically
+* Complete: You can add objects, properties or arrays
 * Callback/Variable or simply a JSON option 
 * JSONP compatible
 * JQuery compatible
 
-Cons : 
+Cons: 
 * Optimized for objects because JSON is an object notation.
 
 Usage
@@ -30,7 +30,7 @@ Usage
     
     $json = new json();
   
-    // Ojects to send (fetched from the DB for example)
+    // Objects to send (fetched from the DB for example)
     $object = new stdClass();
     $object->LastLog = '123456789123456';
     $object->Password = 'Mypassword';
@@ -86,7 +86,7 @@ echo "Unicode: ", json_encode($a, JSON_UNESCAPED_UNICODE), "\n";
 echo "All: ",     json_encode($a, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE)
 ```
 
-Will output : 
+Will output: 
 
 ```bash
 Normal: ["<foo>","'bar'","\"baz\"","&blong&","\u00e9"]
@@ -98,7 +98,7 @@ Unicode: ["<foo>","'bar'","\"baz\"","&blong&","é"]
 All: ["\u003Cfoo\u003E","\u0027bar\u0027","\u0022baz\u0022","\u0026blong\u0026","é"]
 ```
 
-For example :
+For example:
 
 ```php 
 $json->send(JSON_HEX_APOS | JSON_UNESCAPED_UNICODE);
@@ -172,7 +172,7 @@ Contribute
 
 To contribute, just contact me! The first fork will be awesome for me!
 
-NOTE : 
+NOTE: 
 --------
 
 The reason it comes in version 4 which changes a bit the API is the speed. I as wondering how fast it was to use the library and after some tests, it shows it was 6 times slower than the native function. Therefore, for my own sake, it has to be reworked. 
@@ -183,7 +183,7 @@ It now as fast as the native json_encode, without having to think at all.
 Licence
 --------
 
-This work is under MIT licence. Short version : You have to add Alexis Paques in the credits but you can use it for closed-source commercial project.
+This work is under MIT licence. Short version: You have to add Alexis Paques in the credits but you can use it for closed-source commercial project.
 
 What next ?
 ---------
@@ -193,17 +193,17 @@ The next step is obviously to add routes, which is needed to make a powerful API
 References
 ----------
 
-Informations : https://en.wikipedia.org/wiki/JSONP
+Informations: https://en.wikipedia.org/wiki/JSONP
 
-Validator : http://json.parser.online.fr
+Validator: http://json.parser.online.fr
 
-ECMA-404 : http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf
+ECMA-404: http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf
 
-json_encode : https://php.net/manual/fr/function.json-encode.php
+json_encode: https://php.net/manual/fr/function.json-encode.php
 
-Comparaison of JSON PHP libs : http://gggeek.altervista.org/sw/article_20061113.html
+Comparaison of JSON PHP libs: http://gggeek.altervista.org/sw/article_20061113.html
 
-JSON API Standard : http://jsonapi.org/
+JSON API Standard: http://jsonapi.org/
 
 Credits 
 --------
